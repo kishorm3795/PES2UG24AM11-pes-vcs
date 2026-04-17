@@ -187,7 +187,7 @@ int index_save(const Index *index) {
     if (!f) return -1;
 
     // Sort a copy by path (required for deterministic output)
-    IndexEntry sorted[MAX_INDEX_ENTRIES];
+   static  IndexEntry sorted[MAX_INDEX_ENTRIES];
     memcpy(sorted, index->entries, (size_t)index->count * sizeof(IndexEntry));
     qsort(sorted, (size_t)index->count, sizeof(IndexEntry), cmp_index_entries);
 
