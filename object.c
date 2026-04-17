@@ -94,7 +94,11 @@ int object_exists(const ObjectID *id) {
 //
 // Returns 0 on success, -1 on error.
 int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out) {
-    // TODO: Implement
+	    // PHASE 1 PLAN:
+    // 1. Build header string: "blob 16\0" etc.
+    // 2. Compute SHA-256 of (header + data)
+    // 3. Deduplicate if object already exists
+    // 4. Create shard dir, write temp file, rename atomically
     (void)type; (void)data; (void)len; (void)id_out;
     return -1;
 }
