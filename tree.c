@@ -133,6 +133,11 @@ int tree_serialize(const Tree *tree, void **data_out, size_t *len_out) {
 //   - tree_serialize  : convert your populated Tree struct into a binary buffer
 //   - object_write    : save that binary buffer to the store as OBJ_TREE
 //
+
+// Recursive helper: builds a tree for all entries that start with `prefix`.
+// entries[] is the full sorted index array; count is the total number of entries.
+static int write_tree_level(IndexEntry *entries, int count,
+                             const char *prefix, ObjectID *id_out);
 // Returns 0 on success, -1 on error.
 int tree_from_index(ObjectID *id_out) {
     // TODO: Implement recursive tree building
